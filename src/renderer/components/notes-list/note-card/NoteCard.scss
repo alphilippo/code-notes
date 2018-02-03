@@ -1,5 +1,6 @@
 .box {
-  margin: 16px 0;
+  margin: 0;
+  padding-bottom: 0.5rem!important;
 
   .media-content {
     overflow-x: hidden;
@@ -31,14 +32,6 @@
           color: lighten($black, 20%);
         }
       }
-
-      #copy-note {
-        color: $dark;
-
-        &:hover {
-          color: lighten($black, 20%);
-        }
-      }
     }
   }
 
@@ -50,4 +43,22 @@
 
 .Code-Mirror-line {
   padding: 0;
+}
+
+.note-file {
+  background-color: $light;
+  padding: 12px;
+  margin-bottom: 10px;
+
+  .note-file-small {
+    font-size: 12px;
+
+    #copy-file {
+      color: $dark;
+
+      &:hover {
+        color: lighten($black, 20%);
+      }
+    }
+  }
 }
