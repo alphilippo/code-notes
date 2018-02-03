@@ -15,11 +15,14 @@ export default {
       note: {
         name: '',
         description: '',
-        files: {}
+        files: {},
+        updatedAt: null,
+        createdAt: null
       },
       files: [{
+        name: '',
         language: 'text',
-        content: 'toto'
+        content: ''
       }],
       languages
     };
@@ -30,8 +33,11 @@ export default {
   methods: {
     createNote() {
       this.files.forEach(file => {
-        this.note.files[this.note.name] = file;
+        this.note.files[file.name] = file;
       });
+
+      this.note.createdAt = new Date();
+      this.note.updatedAt = new Date();
 
       this.$store.dispatch('addNote', this.note).then(() => {
         this.$parent.close();

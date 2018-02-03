@@ -28,6 +28,8 @@ if (fs.existsSync(path.join(remote.app.getPath('userData'), '/snippets.db'))) {
         language: snippet.language,
         content: snippet.content
       };
+      note.createdAt = new Date();
+      note.updatedAt = new Date();
       dbNotes.insert(note);
     });
     fs.unlinkSync(path.join(remote.app.getPath('userData'), '/snippets.db'));
