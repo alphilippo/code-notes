@@ -18,7 +18,7 @@
 import Vuex from 'vuex';
 
 export default {
-  name: 'cb-sidebar',
+  name: 'cn-sidebar',
   data() {
     return {};
   },

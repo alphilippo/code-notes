@@ -8,10 +8,10 @@ import UpdateNoteModal from '../../modals/update-note-modal/UpdateNoteModal';
 import BTooltip from '../../../../../node_modules/buefy/src/components/tooltip/Tooltip.vue';
 
 export default {
-  name: 'cb-note-card',
+  name: 'cn-note-card',
   components: {
     BTooltip,
-    'cb-update-note-modal': UpdateNoteModal,
+    'cn-update-note-modal': UpdateNoteModal,
     editor,
   },
   props: {

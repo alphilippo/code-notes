@@ -7,7 +7,7 @@ import editor from '../../editor/Editor';
 import languages from '../../../assets/data/languages.json';
 
 export default {
-  name: 'cb-update-note-modal',
+  name: 'cn-update-note-modal',
   components: {
     editor,
   },

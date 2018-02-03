@@ -18,7 +18,7 @@
 
   <div v-if="notesFiltered.length > 0" class="columns notes" v-for="note in notesFiltered">
     <div class="column is-12 note-card">
-      <cb-note-card :note="note"></cb-note-card>
+      <cn-note-card :note="note"></cn-note-card>
     </div>
   </div>
   <div v-if="notesFiltered.length === 0 && searchField === ''" class="columns notes">
@@ -38,6 +38,6 @@
   </div>
 
   <b-modal :active.sync="createNoteModalActive" has-modal-card>
-    <cb-create-note-modal></cb-create-note-modal>
+    <cn-create-note-modal></cn-create-note-modal>
   </b-modal>
 </div>

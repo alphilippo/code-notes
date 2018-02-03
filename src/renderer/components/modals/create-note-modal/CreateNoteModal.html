@@ -24,7 +24,7 @@
       </b-field>
 
       <b-field horizontal label="Language">
-        <b-select placeholder="Select a language" v-model="note.language" d>
+        <b-select placeholder="Select a language" v-model="files[0].language">
           <option
             v-for="language in languages"
             :value="language.name">
@@ -34,8 +34,8 @@
       </b-field>
 
       <b-field horizontal label="Content">
-        <editor v-model="note.content"
-                :lang="note.language"
+        <editor v-model="files[0].content"
+                :lang="files[0].language"
                 theme="monokai"
                 width="100%"
                 height="260"

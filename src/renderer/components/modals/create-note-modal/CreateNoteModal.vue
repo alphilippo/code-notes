@@ -6,7 +6,7 @@ import editor from '../../editor/Editor';
 import languages from '../../../assets/data/languages.json';
 
 export default {
-  name: 'cb-create-note-modal',
+  name: 'cn-create-note-modal',
   components: {
     editor,
   },
@@ -15,10 +15,12 @@ export default {
       note: {
         name: '',
         description: '',
-        language: 'text',
-        content: '',
-        // tags: []
+        files: {}
       },
+      files: [{
+        language: 'text',
+        content: 'toto'
+      }],
       languages
     };
   },
@@ -27,6 +29,10 @@ export default {
   },
   methods: {
     createNote() {
+      this.files.forEach(file => {
+        this.note.files[this.note.name] = file;
+      });
+
       this.$store.dispatch('addNote', this.note).then(() => {
         this.$parent.close();
       });

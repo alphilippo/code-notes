@@ -7,10 +7,10 @@ import NoteCard from './note-card/NoteCard';
 import CreateNoteModal from '../modals/create-note-modal/CreateNoteModal';
 
 export default {
-  name: 'cb-notes-list',
+  name: 'cn-notes-list',
   components: {
-    'cb-note-card': NoteCard,
-    'cb-create-note-modal': CreateNoteModal,
+    'cn-note-card': NoteCard,
+    'cn-create-note-modal': CreateNoteModal,
   },
   data() {
     return {

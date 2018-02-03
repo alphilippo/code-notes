@@ -7,7 +7,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'cb-notes-list',
+      name: 'cn-notes-list',
       component: require('@/components/notes-list/NotesList').default,
     },
     {
