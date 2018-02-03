@@ -20,16 +20,15 @@
         <p>{{note.description}}</p>
 
         <div class="note-file" v-for="(value, key, index) in note.files">
-          <h4>{{key}} <span class="note-file-small">({{value.language}})
-          <b-tooltip :active="showCopiedToClipboard" label="Copied !" always>
-            <a id="copy-file"
-               v-clipboard:copy="value.content"
-               v-clipboard:success="onCopyClipboardSuccess"
-               title="Copy to clipboard">
-              <b-icon icon="clipboard"></b-icon>
-            </a>
-          </b-tooltip>
-          </span>
+          <h4>{{key}}
+            <span class="note-file-small">({{value.language}})
+              <a id="copy-file"
+                 v-clipboard:copy="value.content"
+                 v-clipboard:success="onCopyClipboardSuccess"
+                 title="Copy to clipboard">
+                <b-icon icon="clipboard"></b-icon>
+              </a>
+            </span>
           </h4>
           <editor :code="value.content"
                   :lang="value.language"

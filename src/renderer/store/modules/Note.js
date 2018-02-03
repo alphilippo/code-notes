@@ -67,14 +67,26 @@ const getters = {
 
     if (state.notes.length > 0) {
       state.notes.forEach(note => {
-        if (map.has(note.language)) {
-          map.set(note.language, map.get(note.language) + 1);
-        } else {
-          map.set(note.language, 1);
-        }
+        Object.keys(note.files).forEach(key => {
+          if (map.has(note.files[key].language)) {
+            map.set(note.files[key].language, map.get(note.files[key].language) + 1);
+          } else {
+            map.set(note.files[key].language, 1);
+          }
+        });
+
       });
     }
     return map;
+  },
+  totalFiles() {
+    let total = 0;
+
+    state.notes.forEach(note => {
+      total += Object.keys(note.files).length;
+    });
+
+    return total;
   },
   languageSelected: state => state.languageSelected,
 };

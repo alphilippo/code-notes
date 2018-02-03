@@ -30,14 +30,23 @@ export default {
             el =>
               item.name.toLowerCase().indexOf(el.toLowerCase()) > -1 ||
               item.description.toLowerCase().indexOf(el.toLowerCase()) > -1 ||
-              item.language.toLowerCase().indexOf(el.toLowerCase()) > -1
+              Object.keys(item.files)
+                .some(key => key.toLowerCase().indexOf(el.toLowerCase()) > -1 ||
+                    item.files[key].language.toLowerCase().indexOf(el.toLowerCase()) > -1)
           )
       );
 
       if (this.languageSelected !== 'all') {
-        return notesFiltered.filter(
-          note => note.language === this.languageSelected
-        );
+        const notesFilteredByLanguage = [];
+
+        notesFiltered.forEach(note => {
+          if (Object.keys(note.files)
+              .some(key => note.files[key].language === this.languageSelected)) {
+            notesFilteredByLanguage.push(note);
+          }
+        });
+
+        return notesFilteredByLanguage;
       }
 
       return notesFiltered;

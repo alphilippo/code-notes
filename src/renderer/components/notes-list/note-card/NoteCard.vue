@@ -19,8 +19,7 @@ export default {
   },
   data() {
     return {
-      updateNoteModalActive: false,
-      showCopiedToClipboard: false,
+      updateNoteModalActive: false
     };
   },
   computed: {
@@ -43,10 +42,10 @@ export default {
       });
     },
     onCopyClipboardSuccess() {
-      this.showCopiedToClipboard = true;
-      setTimeout(() => {
-        this.showCopiedToClipboard = false;
-      }, 1000);
+      this.$toast.open({
+        message: 'Copied',
+        position: 'is-bottom'
+      });
     },
   },
 };
