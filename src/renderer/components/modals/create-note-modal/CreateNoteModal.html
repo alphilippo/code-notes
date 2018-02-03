@@ -23,12 +23,16 @@
       </b-field>
 
       <div class="note-file" v-for="file in files">
-        <b-field horizontal label="Filename">
+        <b-field horizontal label="Filename" grouped>
           <b-input
+            style="width: 186px"
             type="text"
             v-model="file.name"
             placeholder="Your file name">
           </b-input>
+          <p class="control is-pulled-right" v-if="files.length > 1">
+            <button class="button is-danger" @click="deleteFile(file)"><b-icon icon="trash"></b-icon></button>
+          </p>
         </b-field>
 
         <b-field horizontal label="Language">
@@ -50,6 +54,7 @@
           ></editor>
         </b-field>
       </div>
+      <button class="button" type="button" @click="addFile()" v-if="files.length < 5"><b-icon id="plus" icon="plus"></b-icon> Add a file</button>
     </section>
 
     <footer class="modal-card-foot">
