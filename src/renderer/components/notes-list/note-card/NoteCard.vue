@@ -1,44 +1,44 @@
-<template src="./SnippetCard.html">
+<template src="./NoteCard.html">
 </template>
 
 <script>
 import Vuex from 'vuex';
 import editor from '../../editor/Editor';
-import UpdateSnippetModal from '../../modals/update-snippet-modal/UpdateSnippetModal';
+import UpdateNoteModal from '../../modals/update-note-modal/UpdateNoteModal';
 import BTooltip from '../../../../../node_modules/buefy/src/components/tooltip/Tooltip.vue';
 
 export default {
-  name: 'cb-snippet-card',
+  name: 'cb-note-card',
   components: {
     BTooltip,
-    'cb-update-snippet-modal': UpdateSnippetModal,
+    'cb-update-note-modal': UpdateNoteModal,
     editor,
   },
   props: {
-    snippet: Object,
+    note: Object,
   },
   data() {
     return {
-      updateSnippetModalActive: false,
+      updateNoteModalActive: false,
       showCopiedToClipboard: false,
     };
   },
   computed: {
-    ...Vuex.mapGetters(['snippets']),
+    ...Vuex.mapGetters(['notes']),
   },
   methods: {
-    updateSnippet() {
-      this.$store.dispatch('updateSnippet', this.snippet);
+    updateNote() {
+      this.$store.dispatch('updateNote', this.note);
     },
-    deleteSnippet() {
+    deleteNote() {
       this.$dialog.confirm({
-        title: 'Delete snippet',
-        message: 'Are you sure you want to delete this snippet ?',
+        title: 'Delete note',
+        message: 'Are you sure you want to delete this note ?',
         confirmText: 'Delete',
         type: 'is-danger',
         hasIcon: true,
         onConfirm: () => {
-          this.$store.dispatch('deleteSnippet', this.snippet);
+          this.$store.dispatch('deleteNote', this.note);
         },
       });
     },
@@ -52,5 +52,5 @@ export default {
 };
 </script>
 
-<style src="./SnippetCard.scss" lang="scss">
+<style src="./NoteCard.scss" lang="scss">
 </style>

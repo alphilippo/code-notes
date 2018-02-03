@@ -4,12 +4,6 @@ import fs from 'fs';
 // eslint-disable-next-line
 import { remote } from 'electron';
 
-// For migration
-const dbSnippets = new Datastore({
-  autoload: true,
-  filename: path.join(remote.app.getPath('userData'), '/snippets.db'),
-});
-
 const dbNotes = new Datastore({
   autoload: true,
   filename: path.join(remote.app.getPath('userData'), '/notes.db'),
@@ -17,20 +11,27 @@ const dbNotes = new Datastore({
 
 // Doing the migration
 if (fs.existsSync(path.join(remote.app.getPath('userData'), '/snippets.db'))) {
+
+  const dbSnippets = new Datastore({
+    autoload: true,
+    filename: path.join(remote.app.getPath('userData'), '/snippets.db'),
+  });
+
   dbSnippets.find({}, (err, snippets) => {
     snippets.forEach(snippet => {
-      const newSnippet = {};
-      newSnippet.id = snippet._id;
-      newSnippet.name = snippet.name;
-      newSnippet.description = snippet.description;
-      newSnippet.files = {};
-      newSnippet.files[`${snippet.name}`] = {
+      const note = {};
+      note.id = snippet._id;
+      note.name = snippet.name;
+      note.description = snippet.description;
+      note.files = {};
+      note.files[`${snippet.name}`] = {
         language: snippet.language,
         content: snippet.content
       };
-      dbNotes.insert(newSnippet);
+      dbNotes.insert(note);
     });
     fs.unlinkSync(path.join(remote.app.getPath('userData'), '/snippets.db'));
+    remote.getCurrentWindow().reload();
   });
 }
 

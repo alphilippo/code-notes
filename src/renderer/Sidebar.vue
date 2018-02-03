@@ -5,7 +5,7 @@
     </p>
     <ul class="menu-list">
       <li>
-        <a :class="{'is-active': languageSelected === 'all'}" @click="selectLanguage('all')">All <b-tag class="is-pulled-right" type="is-dark">{{snippets.length}}</b-tag></a>
+        <a :class="{'is-active': languageSelected === 'all'}" @click="selectLanguage('all')">All <b-tag class="is-pulled-right" type="is-dark">{{notes.length}}</b-tag></a>
       </li>
       <li v-for="(list, value) in Array.from(languages)">
         <a :class="{'is-active': languageSelected === list[0]}" @click="selectLanguage(list[0])">{{list[0] | capitalize}} <b-tag class="is-pulled-right" type="is-dark">{{list[1]}}</b-tag></a>
@@ -28,7 +28,7 @@ export default {
     },
   },
   computed: {
-    ...Vuex.mapGetters(['languages', 'snippets', 'languageSelected']),
+    ...Vuex.mapGetters(['languages', 'notes', 'languageSelected']),
   },
 };
 </script>

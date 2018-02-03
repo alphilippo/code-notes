@@ -24,7 +24,7 @@
     #action-buttons {
       padding-bottom: 0;
 
-      #delete-snippet {
+      #delete-note {
         color: $danger;
 
         &:hover {
@@ -32,7 +32,7 @@
         }
       }
 
-      #copy-snippet {
+      #copy-note {
         color: $dark;
 
         &:hover {

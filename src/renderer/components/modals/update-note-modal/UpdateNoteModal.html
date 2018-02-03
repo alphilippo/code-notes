@@ -1,16 +1,16 @@
 <form action="">
   <div class="modal-card">
     <header class="modal-card-head">
-      <p class="modal-card-title">Update snippet</p>
+      <p class="modal-card-title">Update note</p>
     </header>
 
     <section class="modal-card-body">
       <b-field horizontal label="Name">
         <b-input
           type="text"
-          ref="snippetName"
-          v-model="snippetUpdated.name"
-          placeholder="Your snippet name"
+          ref="noteName"
+          v-model="noteUpdated.name"
+          placeholder="Your note name"
           required>
         </b-input>
       </b-field>
@@ -18,13 +18,13 @@
       <b-field horizontal label="Description">
         <b-input
           type="text"
-          v-model="snippetUpdated.description"
-          placeholder="Your snippet description">
+          v-model="noteUpdated.description"
+          placeholder="Your note description">
         </b-input>
       </b-field>
 
       <b-field horizontal label="Language">
-        <b-select placeholder="Select a language" v-model="snippetUpdated.language" required>
+        <b-select placeholder="Select a language" v-model="noteUpdated.language" required>
           <option
             v-for="language in languages"
             :value="language.name">
@@ -35,26 +35,17 @@
 
       <b-field horizontal label="Content">
         <editor v-model="code"
-                :lang="snippetUpdated.language"
+                :lang="noteUpdated.language"
                 theme="monokai"
                 width="100%"
                 height="260"
         ></editor>
       </b-field>
-
-      <!--<b-field horizontal label="Tags">
-        <b-taginput
-          v-model="snippetUpdated.tags"
-          icon="label"
-          placeholder="Add a tag"
-          maxtags="5">
-        </b-taginput>
-      </b-field>-->
     </section>
 
     <footer class="modal-card-foot">
       <button class="button" type="button" @click="$parent.close()">Cancel</button>
-      <button class="button is-primary" type="button" :disabled="isDisabled" @click="updateSnippet()">Update</button>
+      <button class="button is-primary" type="button" :disabled="isDisabled" @click="updateNote()">Update</button>
     </footer>
   </div>
 </form>

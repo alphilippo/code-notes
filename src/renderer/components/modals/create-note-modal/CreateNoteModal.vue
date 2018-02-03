@@ -1,4 +1,4 @@
-<template src="./CreateSnippetModal.html">
+<template src="./CreateNoteModal.html">
 </template>
 
 <script>
@@ -6,13 +6,13 @@ import editor from '../../editor/Editor';
 import languages from '../../../assets/data/languages.json';
 
 export default {
-  name: 'cb-create-snippet-modal',
+  name: 'cb-create-note-modal',
   components: {
     editor,
   },
   data() {
     return {
-      snippet: {
+      note: {
         name: '',
         description: '',
         language: 'text',
@@ -23,11 +23,11 @@ export default {
     };
   },
   mounted() {
-    this.$refs.snippetName.focus();
+    this.$refs.noteName.focus();
   },
   methods: {
-    createSnippet() {
-      this.$store.dispatch('addSnippet', this.snippet).then(() => {
+    createNote() {
+      this.$store.dispatch('addNote', this.note).then(() => {
         this.$parent.close();
       });
     },
@@ -35,14 +35,14 @@ export default {
   computed: {
     isDisabled() {
       return (
-        !/\S/.test(this.snippet.name) ||
-        !/\S/.test(this.snippet.language) ||
-        !/\S/.test(this.snippet.content)
+        !/\S/.test(this.note.name) ||
+        !/\S/.test(this.note.language) ||
+        !/\S/.test(this.note.content)
       );
     },
   },
 };
 </script>
 
-<style src="./CreateSnippetModal.scss" lang="scss">
+<style src="./CreateNoteModal.scss" lang="scss">
 </style>
